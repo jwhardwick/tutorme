@@ -1,0 +1,16 @@
+// Colors
+
+// Partials
+@import 'partials/layout.vars.scss';
+@import 'partials/colors.vars.scss';
+@import 'partials/fonts.vars.scss';
+@import 'partials/responsive.partial.scss';
+@import 'partials/mixins.scss';
+@import 'partials/functions.scss';
+
+// Bootrasp
+@import '~bootstrap/scss/bootstrap';
+
+// Global styles
+@import 'base.scss';
+

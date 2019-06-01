@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <app-filter-panel
+    [filterOptions]="codeOption"
+    (formChange)="filterTutors($event.query, $event.filterOption)">
+  </app-filter-panel>
+  
+  <div class="card-deck justify-content-center">
+  
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Price</th>
+            <th scope="col">Name</th>
+            <th scope="col">Rating</th>
+            <th scope="col">Next Availability</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tutor of filteredTutors$ | async"
+            (click)="selectTutor(tutor)"
+            class="tableRow">
+            <th scope="row">
+              ${{ tutor.cost }}/hr
+            </th>
+            <td>
+              {{ tutor.name }}
+            </td>
+            <td>
+              {{ getTutorRating(tutor) }}
+            </td>
+            <td>
+              <div class="row" *ngFor="let availability of tutor.availability">
+                <div class="col text-right">
+                  {{ availability.code }} -
+                </div>
+                <div class="col">
+                  {{ getDate(availability.date) | date:'d/M/yy, h a' }}
+                </div>
+              </div>
+              <!-- {{ getNextAvailiability(tutor) | date:'d/M/yy, h a' }}   -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  
+  </div>
+</div>
