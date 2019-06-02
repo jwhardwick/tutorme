@@ -38,4 +38,16 @@ export class ViewComponent implements OnInit {
     ).subscribe();
   }
 
+  getAbout() {
+    return this.data.getRandomAbout(this.tutor);
+  }
+
+  getExperience() {
+    return this.data.getRandomExperience(this.tutor);
+  }
+
+  getDate(timestamp: number) {
+    return new Date(timestamp);
+  }
+
 }

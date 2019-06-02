@@ -5,6 +5,7 @@ import { FilterOption } from '../filter-panel/filter-panel.component';
 import { DataFilterService } from 'src/app/shared/data-filter.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search',
@@ -16,6 +17,11 @@ export class SearchComponent implements OnInit {
   tutors$: Observable<Tutor[]>;
   filteredTutors$: Observable<Tutor[]>;
   // subjects$: Observable<UniSubject[]>;
+
+  public query: any = '';
+  public filterOption: FilterOption;
+
+  selectedPrice: 'any' | 'low' | 'medium' | 'high' = 'any';
 
   public codeOption: FilterOption[] = [
     {props: ['codes'], label: 'Subject Code'}
@@ -32,11 +38,14 @@ export class SearchComponent implements OnInit {
     this.filteredTutors$ = this.tutors$;
   }
 
-  filterTutors(query: any, filterOption: FilterOption): void {
+  getFilterTutors(): void {
+    const props = this.filterOption ? this.filterOption.props : null;
     this.filteredTutors$ = this.dataFilterService.getFilteredStream(
       this.tutors$,
-      query,
-      filterOption.props);
+      this.query,
+      props).pipe(
+        map(tutors => tutors.filter(tutor => this.filterTutorPrice(tutor)))
+      )
   }
 
   getTutorRating(tutor: Tutor) {
@@ -53,6 +62,34 @@ export class SearchComponent implements OnInit {
 
   selectTutor(tutor: Tutor) {
     this.router.navigate([`/view/${tutor.id}`]);
+  }
+
+  selectPrice(type: 'low' | 'medium' | 'high') {
+    this.selectedPrice = type;
+    this.getFilterTutors();
+  }
+
+  filterTutors(query: any, filterOption: FilterOption) {
+    this.query = query;
+    this.filterOption = filterOption;
+    this.getFilterTutors();
+  }
+
+  filterTutorPrice(tutor: Tutor) {
+    switch (this.selectedPrice) {
+      case 'any': {
+        return true;
+      }
+      case 'low': {
+        return tutor.cost <= 60;
+      }
+      case 'medium': {
+        return tutor.cost > 60 && tutor.cost < 75;
+      }
+      case 'high': {
+        return tutor.cost >= 75;
+      }
+    }
   }
 
 }

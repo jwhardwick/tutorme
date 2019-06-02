@@ -1,5 +1,4 @@
 import { FilterPanelComponent } from './components/filter-panel/filter-panel.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -12,6 +11,9 @@ import { DataService } from './shared/data.service';
 import { AppRoutingModule } from './app-routing.module';
 import { DataFilterService } from './shared/data-filter.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './components/register/register.component';
+import { AboutComponent } from './components/about/about.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +22,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SearchComponent,
     ViewComponent,
     HeaderComponent,
-    FooterComponent,
     FilterPanelComponent,
+    RegisterComponent,
+    AboutComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

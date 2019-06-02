@@ -1,10 +1,14 @@
 <div class="container-fluid">
-  <app-filter-panel
-    [filterOptions]="codeOption"
-    (formChange)="filterTutors($event.query, $event.filterOption)">
-  </app-filter-panel>
+  <div class="row text-center m-2">
+    <app-filter-panel
+      [filterOptions]="codeOption"
+      (formChange)="filterTutors($event.query, $event.filterOption)"
+      (priceChange)="selectPrice($event.type)"
+      >
+    </app-filter-panel>
+  </div>
   
-  <div class="card-deck justify-content-center">
+  <div class="row text-center">
   
     <table class="table">
         <thead>
@@ -34,7 +38,7 @@
                   {{ availability.code }} -
                 </div>
                 <div class="col">
-                  {{ getDate(availability.date) | date:'d/M/yy, h a' }}
+                  {{ getDate(availability.date) | date:'d/M/yy, h' }} PM
                 </div>
               </div>
               <!-- {{ getNextAvailiability(tutor) | date:'d/M/yy, h a' }}   -->

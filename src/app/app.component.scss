@@ -1,5 +1,7 @@
 @import '../assets/scss/partials/_layout.vars.scss';
 @import '../assets/scss/partials/responsive.partial';
+@import '../assets/scss/partials/colors.vars';
+
 
 .layout-overflow {
   overflow: hidden; /* necessary to handle offcanvas scrollbar behavior */
@@ -26,4 +28,11 @@
     max-width: 960px;
     padding: $padding-screen-large;
   }
+}
+
+.app {
+  min-height: 100vh;
+  width: 95%;
+  background-color: $--highlight-light;
+  margin: auto;
 }

@@ -1,7 +1,7 @@
 <form class="form-inline" [formGroup]="searchForm">
 
     <!-- Query -->
-    <div class="form-group">
+    <div class="form-group m-2">
       <input class="form-control mr-sm-2"
         id="query-input"
         type="search" 
@@ -9,6 +9,41 @@
         formControlName="query"
         aria-label="Search">
     </div>
+
+    <div class="btn-group m-2">
+      <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false"
+        (click)="uniExpanded = !uniExpanded; priceExpanded = false"
+        >
+        University
+      </button>
+      <div class="dropdown-menu"
+        [ngStyle]="{
+          'display': uniExpanded ? 'inherit' : 'none'
+        }"
+      >
+        <a class="dropdown-item" (click)="uniExpanded = !uniExpanded">USYD</a>
+      </div>
+    </div>
+
+    <div class="btn-group m-2">
+        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false"
+          (click)="priceExpanded = !priceExpanded; uniExpanded = false"
+          >
+          Price Range
+        </button>
+        <div class="dropdown-menu"
+          [ngStyle]="{
+            'display': priceExpanded ? 'inherit' : 'none'
+          }"
+        >
+        <a class="dropdown-item" (click)="selectPrice('any')">Any></a>
+          <a class="dropdown-item" (click)="selectPrice('low')"><= $60></a>
+          <a class="dropdown-item" (click)="selectPrice('medium')">$60 - $70></a>
+          <a class="dropdown-item" (click)="selectPrice('high')">>= $75></a>
+        </div>
+      </div>
   
     
 </form>

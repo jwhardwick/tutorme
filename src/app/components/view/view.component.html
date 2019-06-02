@@ -1,13 +1,73 @@
-<p>
-  view works!
-</p>
-
-<div class="tutor" *ngIf="tutor">
-  <h3>
-    {{ tutor.name }}
-  </h3>
-  
-  <h4>
-    {{ tutor.id }}
-  </h4>
+<div class="container-fluid" *ngIf="tutor">
+  <div class="row text-center">
+    <div class="col-12 mb-3">
+      <h1>{{ tutor.name }}'s Tutor Page</h1>
+    </div>
+    <div class="col-6">
+      <div class="dropColor">
+        <h2>About me</h2>
+        <p>{{ getAbout() }}</p>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="dropColor">
+        <h2>Cost structure</h2>
+        <p>All my classes are billed at ${{ tutor.cost }}/hr.</p>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="dropColor">
+        <h2>Experience</h2>
+        <p>{{ getExperience() }}</p>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="dropColor">
+        <h2>Subjects offered</h2>
+        <p *ngFor="let subject of tutor.subjects">
+          * {{ subject.uni }} - {{ subject.code }}
+        </p>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="dropColor">
+        <h2>Availability</h2>
+        <p *ngFor="let availability of tutor.availability">
+          * {{ availability.code }} - {{ getDate(availability.date) | date:'d/M/yy, h' }} PM
+        </p>
+      </div>
+    </div>
+    <div class="col-6">
+        <div class="dropColor">
+          <h2>Reviews</h2>
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Score</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Subject</th>
+                  <th scope="col">Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let review of tutor.reviews"
+                  class="tableRow">
+                  <th scope="row">
+                    {{ review.score }}
+                  </th>
+                  <td>
+                    {{ review.author }}
+                  </td>
+                  <td>
+                    {{ review.code }}
+                  </td>
+                  <td>
+                    {{ getDate(review.date) | date:'d/M/yy' }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+  </div>
 </div>

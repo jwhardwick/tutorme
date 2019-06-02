@@ -1,3 +1,21 @@
+@import "../../../assets/scss/partials/colors.vars";
+
 .nav-link {
-    cursor: pointer
+    cursor: pointer;
+}
+
+.navbar-brand {
+    color: $--highlight;
+}
+
+.navbar {
+    margin-top: 10px;
+    background-color: $--primary;
+    box-shadow: 5px 5px 0px $--highlight;
+    transition: all 0.1s linear;
+    &:hover {
+        margin-left: -5px;
+        margin-right: 5px;
+        box-shadow: 10px 10px 0px $--highlight;
+    }
 }

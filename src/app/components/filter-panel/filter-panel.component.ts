@@ -17,8 +17,12 @@ export class FilterPanelComponent implements OnInit {
 
   @Input() filterOptions: FilterOption[];
   @Output() formChange = new EventEmitter<{query: any, filterOption: FilterOption}>();
+  @Output() priceChange = new EventEmitter<{type: 'any' | 'low' | 'medium' | 'high'}>();
 
   searchForm: FormGroup;
+
+  public uniExpanded = false;
+  public priceExpanded = false;
 
   constructor() { }
 
@@ -44,6 +48,11 @@ export class FilterPanelComponent implements OnInit {
       })
 
     ).subscribe();
+  }
+
+  selectPrice(type: 'any' | 'low' | 'medium' | 'high') {
+    this.priceExpanded = false;
+    this.priceChange.emit({type})
   }
 
 }

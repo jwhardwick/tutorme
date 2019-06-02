@@ -6,23 +6,12 @@ $teal-color: #374140;
 $grey-color: #2A2C2B;
 $charcoal-color: #1E1E20;
 
-// @function theme-color($key: "primary") {
-//     @return map-get($theme-colors, $key);
-// }
+$--primary: #ff9e50;
+$--secondary: #1fa2e5;
+$--secondary-light: #24b1f8;
+$--highlight: #8e83bc;
+$--highlight-light: #d6d3e256;
 
-// $theme-colors: (
-//     "primary": #334D5C,
-//     "info": #45B29D,
-//     "warning": #EFC94C,
-//     "danger": #DF5A49,
-//     "success": #5C832F,
-// );
-
-// $brand-primary:         theme-color("primary"); // #337ab7
-// $brand-success:         theme-color("success");
-// $brand-info:            theme-color("info");
-// $brand-warning:         theme-color("warning");
-// $brand-danger:          theme-color("danger");
 
 $blue:    #334D5C;
 $indigo:  #6f4ea3;

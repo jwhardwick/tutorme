@@ -45,7 +45,7 @@ export class DataService {
       const randomSubject = Data.subjectData[Math.floor(Math.random() * Data.subjectData.length)];
       for (let i = 0; i < Math.random() * 10; i++) {
         const score = i % 3 + 3;
-        const date = Date.now() - Math.floor(Math.random() * 1000000000);
+        const date = Date.now() - Math.floor(Math.random() * 10000000000);
         const code = randomSubject.code;
         const review = new Review('Anonymous', tutor.id, randomSubject.code, date, score);
         tutor.reviews.push(review);
@@ -59,18 +59,27 @@ export class DataService {
     return tutor;
   }
 
-  public getRandomAbout() {
-    const abouts = [
-      ''
+  public getRandomAbout(tutor: Tutor) {
+    const data = [
+      `Hi my name is ${tutor.name}, and I am a passionate ${this.rand() ? 'current' : 'former'} student. I enjoy taking the time to teach people in a 1 on 1 setting.`,
+      `Welcome to my page, I'm ${tutor.name}. I am a ${this.rand() ? 'current' : 'former'} student that loves Computer Science.`
     ]
+    return data[Math.floor(Math.random() * data.length)];
   }
 
-  public getRandomExperience() {
-
+  public getRandomExperience(tutor: Tutor) {
+    const data = [
+      `I have over ${this.rand() ? '2' : '4'} years experience tutoring. ${this.rand() ? 'I have been an official tutor through my university.' : 'I have tutored privately outside of my university.'}`
+    ]
+    return data[Math.floor(Math.random() * data.length)];
   }
 
   public getRandomCost() {
 
+  }
+
+  public rand() {
+    return Math.random() * 2 >= 1;
   }
 
  }

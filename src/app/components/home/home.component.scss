@@ -1,0 +1,18 @@
+@import "../../../assets/scss/partials/colors.vars";
+
+
+.dropColor {
+    background-color: $--primary;
+    padding-bottom: 40px;
+    box-shadow: 5px 5px 0px $--highlight;
+    transition: all 0.1s linear;
+    &:hover {
+        margin-left: -5px;
+        margin-right: 5px;
+        box-shadow: 10px 10px 0px $--highlight;
+    }
+
+    p {
+        margin: 20px 60px;
+    }
+}
