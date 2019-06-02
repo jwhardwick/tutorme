@@ -1,3 +1,4 @@
+import { PayComponent } from './components/pay/pay.component';
 import { ViewComponent } from './components/view/view.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -31,6 +32,10 @@ const routes: Routes = [
     {
         path: 'view/:tutorId',
         component: ViewComponent
+    },
+    {
+        path: 'pay/:date/:code',
+        component: PayComponent
     },
 ];
 

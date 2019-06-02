@@ -1,21 +1,9 @@
 @import "../../../assets/scss/partials/colors.vars";
 
-.nav-link {
-    cursor: pointer;
-    &.active {
-        color: $--secondary !important;
-    }
-}
 
-.navbar-brand {
-    color: $--highlight;
-    &.active {
-        color: $--highlight !important;
-    }
-}
-
-.navbar {
-    background-color: $--primary;
+.dropColor {
+    background-color: $--yellow;
+    padding-bottom: 40px;
     box-shadow: 5px 5px 0px $--highlight;
     transition: all 0.1s linear;
     &:hover {
@@ -23,5 +11,8 @@
         margin-right: 5px;
         box-shadow: 10px 10px 0px $--highlight;
     }
-}
 
+    p {
+        margin: 20px 60px;
+    }
+}

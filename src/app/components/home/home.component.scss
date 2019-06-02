@@ -2,7 +2,7 @@
 
 
 .dropColor {
-    background-color: $--primary;
+    background-color: $--yellow;
     padding-bottom: 40px;
     box-shadow: 5px 5px 0px $--highlight;
     transition: all 0.1s linear;
@@ -15,4 +15,11 @@
     p {
         margin: 20px 60px;
     }
+}
+
+.secondary {
+    color: $--secondary;
+}
+.highlight {
+    color: $--highlight;
 }

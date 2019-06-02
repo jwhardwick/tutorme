@@ -1,7 +1,8 @@
+import { Availability } from './../../models/data.model';
 import { DataService } from './../../shared/data.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Tutor } from 'src/app/models/data.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { flatMap, filter, tap, map } from 'rxjs/operators';
 
 @Component({
@@ -16,6 +17,7 @@ export class ViewComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private data: DataService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -48,6 +50,11 @@ export class ViewComponent implements OnInit {
 
   getDate(timestamp: number) {
     return new Date(timestamp);
+  }
+
+  bookTutor(avail: Availability) {
+    console.log('bookTutor', avail)
+    this.router.navigate([`pay/${avail.date}/${avail.code}`]);
   }
 
 }

@@ -43,18 +43,19 @@ export class DataService {
   private _addTutorData(tutor: Tutor) {
     for (let j = 0; j < Math.max(1, Math.random() * 5); j++) {
       const randomSubject = Data.subjectData[Math.floor(Math.random() * Data.subjectData.length)];
-      for (let i = 0; i < Math.random() * 10; i++) {
+      for (let i = 0; i < Math.random() * 3; i++) {
         const score = i % 3 + 3;
         const date = Date.now() - Math.floor(Math.random() * 10000000000);
         const code = randomSubject.code;
         const review = new Review('Anonymous', tutor.id, randomSubject.code, date, score);
         tutor.reviews.push(review);
+        const availDate = Date.now() + Math.floor(Math.random() * 1000000000);
+        tutor.availability.push(new Availability(randomSubject.code, availDate, 60));
       }
       tutor.subjects.push(randomSubject);
   
-      const availDate = Date.now() + Math.floor(Math.random() * 1000000000);
-      tutor.availability.push(new Availability(randomSubject.code, availDate, 60));
     }
+    tutor.availability = tutor.availability.sort((a,b) => a.date - b.date);
     tutor.codes = tutor.subjects.reduce((acc, cur) => acc += cur.code, '');
     return tutor;
   }

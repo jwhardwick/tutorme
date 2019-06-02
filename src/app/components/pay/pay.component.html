@@ -1,0 +1,16 @@
+<div class="container-fluid" *ngIf="!loading">
+    <div class="row">
+      <div class="col-12 text-center mt-2 mb-2 dropColor">
+        <h3 class="mt-3">
+          Confirm your booking.
+        </h3>
+        <p>
+          {{ code }} on {{ getDate(date) | date:'d/M/yy, h' }} PM
+        </p>
+        <a href="https://www.paypal.com">
+          <button type="submit" class="btn btn-secondary">Continue with PayPal</button>
+        </a>
+      </div>
+      
+    </div>
+  </div>

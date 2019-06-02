@@ -24,17 +24,29 @@
     <div class="col-6">
       <div class="dropColor">
         <h2>Subjects offered</h2>
-        <p *ngFor="let subject of tutor.subjects">
-          * {{ subject.uni }} - {{ subject.code }}
-        </p>
+        <div class="row">
+          <div class="col-8 offset-2 boxItem mb-2" *ngFor="let subject of tutor.subjects">
+            <p>
+              {{ subject.uni }} - {{ subject.code }}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="col-6">
       <div class="dropColor">
         <h2>Availability</h2>
-        <p *ngFor="let availability of tutor.availability">
-          * {{ availability.code }} - {{ getDate(availability.date) | date:'d/M/yy, h' }} PM
-        </p>
+        <p>Select a time to book.</p>
+        <div class="row">
+          <div class="col-8 offset-2 boxItem mb-2 avail"
+            *ngFor="let availability of tutor.availability">
+            <p 
+            (click)="bookTutor(availability)"            
+            >
+              {{ availability.code }} - {{ getDate(availability.date) | date:'d/M/yy, h' }} PM
+            </p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="col-6">
